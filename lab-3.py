@@ -7,7 +7,7 @@ s3 = boto3.client('s3')
 
 def main(argv):
     cmd =  determine_command(int(argv[0]))
-    log_file_name = datetime.datetime.now().strftime("%m_%d_%Y") + "_logfile"
+    log_file_name = datetime.datetime.now(datetime.timezone.utc).strftime("%m/%d/%Y, %H:%M:%S")+ "_logfile"
     kickoff_subprocess(cmd, log_file_name)
     upload_output_to_S3(log_file_name)
 
